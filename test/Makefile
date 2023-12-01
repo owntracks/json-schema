@@ -39,20 +39,20 @@ messagetest: card-without-face.mfail \
 	waypoint-circular.msuccess
 
 %.esuccess: %.json
-	@$(CHECK) $(CHECKFLAGS) --schemafile ../schemas/encryption --base-uri $(PWD)/../schemas/encryption $?
+	@$(CHECK) $(CHECKFLAGS) --schemafile ../schemas/encryption.json --base-uri $(PWD)/../schemas/encryption.json $?
 
 %.efail: %.json
-	@! $(CHECK) $(CHECKFLAGS) --schemafile ../schemas/encryption --base-uri $(PWD)/../schemas/encryption $?
+	@! $(CHECK) $(CHECKFLAGS) --schemafile ../schemas/encryption.json --base-uri $(PWD)/../schemas/encryption.json $?
 
 %.ssuccess: %.json
-	@$(CHECK) $(CHECKFLAGS) --schemafile ../schemas/messages --base-uri $(PWD)/../schemas/messages $?
+	@$(CHECK) $(CHECKFLAGS) --schemafile ../schemas/messages.json --base-uri $(PWD)/../schemas/messages.json $?
 
 %.sfail: %.json
-	@! $(CHECK) $(CHECKFLAGS) --schemafile ../schemas/messages --base-uri $(PWD)/../schemas/messages $?
+	@! $(CHECK) $(CHECKFLAGS) --schemafile ../schemas/messages.json --base-uri $(PWD)/../schemas/messages.json $?
 
 %.msuccess: %.json
-	@$(CHECK) $(CHECKFLAGS) --schemafile ../schemas/message --base-uri $(PWD)/../schemas/message $?
+	@$(CHECK) $(CHECKFLAGS) --schemafile ../schemas/message.json --base-uri $(PWD)/../schemas/message.json $?
 
 %.mfail: %.json
-	@! $(CHECK) $(CHECKFLAGS) --schemafile ../schemas/message --base-uri $(PWD)/../schemas/message $?
+	@! $(CHECK) $(CHECKFLAGS) --schemafile ../schemas/message.json --base-uri $(PWD)/../schemas/message.json $?
 
