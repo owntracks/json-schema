@@ -1,0 +1,7 @@
+{
+  "_type": "cmd",
+  "action": "response",
+  "request": "tours",
+  "tours": [],
+  "ntours": 0
+}

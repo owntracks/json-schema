@@ -1,0 +1,30 @@
+{
+  "_type": "cmd",
+  "action": "response",
+  "request": "tours",
+  "tours": [
+    {
+      "page": "leafletmap.html",
+      "user": "ck00",
+      "device": "schema",
+      "label": "Meeting with C. in Essen",
+      "zoom": 6,
+      "from": "2022-08-01T05:35:58",
+      "to": "2022-08-02T15:00:58",
+      "uuid": "91e8a556-ce69-482d-a29a-170139864873",
+      "url": "https://mydomain.com/view/91e8a556-ce69-482d-a29a-170139864873"
+    },
+    {
+      "page": "leafletmap.html",
+      "user": "ck00",
+      "device": "schema",
+      "label": "Meeting with C. in Essen",
+      "zoom": 6,
+      "from": "2022-08-01T05:35:58",
+      "to": "2022-08-02T15:00:58",
+      "uuid": "f012b936-48a8-41b0-9c97-d62c2dc5ed11",
+      "url": "https://mydomain.com/view/f012b936-48a8-41b0-9c97-d62c2dc5ed11"
+    }
+  ],
+  "ntours": 2
+}

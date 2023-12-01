@@ -1,0 +1,14 @@
+{
+    "_type" : "location",
+    "acc" : 35,
+    "alt" : 0,
+    "batt" : 75,
+    "bs" : 1,
+    "conn" : "w",
+    "lat" : 52.195913,
+    "lon" : 7.688245,
+    "m" : 1,
+    "tag" : "Coffee",
+    "tid" : "C1",
+    "tst" : 1699882482
+}

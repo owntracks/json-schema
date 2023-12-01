@@ -1,0 +1,10 @@
+{
+  "_type": "request",
+  "request": "tour",
+  "tour": {
+    "label": "Meeting with C. in Essen",
+    "from": "2022-08-01T05:35:58",
+    "to": "2022-08-02T15:00:58"
+  }
+}
+
