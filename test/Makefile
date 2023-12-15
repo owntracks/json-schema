@@ -38,7 +38,10 @@ messagetest: card-without-face.mfail \
 	steps-nohave.msuccess \
 	transition.msuccess \
 	w.msuccess \
-	waypoint-circular.msuccess
+	waypoint-circular.msuccess \
+	lwt.msuccess \
+	lwt-notst.mfail \
+	lwt-extra.msuccess
 
 %.esuccess: %.json
 	@$(CHECK) $(CHECKFLAGS) --schemafile ../schemas/encryption.json --base-uri $(PWD)/../schemas/encryption.json $?

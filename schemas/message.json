@@ -10,11 +10,9 @@
         "_type": { "$ref": "#/$defs/_type" },
         "action": { "$ref": "#/$defs/action" },
         "content": { "$ref": "#/$defs/content" },
-        "face": { "$ref": "#/$defs/face" },
         "lat": { "$ref": "#/$defs/lat" },
         "lon": { "$ref": "#/$defs/lon" },
         "tst": { "$ref": "#/$defs/tst" },
-        "name": { "$ref": "#/$defs/name" },
         "notification": { "$ref": "#/$defs/notification" },
         "ntours": { "$ref": "#/$defs/ntours" },
         "request": { "$ref": "#/$defs/request" },
@@ -81,6 +79,10 @@
                 },
                 "required": [ "_type" ]
             }, "then": {
+                "properties": {
+                    "face": { "$ref": "#/$defs/face" },
+                    "name": { "$ref": "#/$defs/name" }
+                },
                 "required": [ "face", "name" ]
             }
         },
