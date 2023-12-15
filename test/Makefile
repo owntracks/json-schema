@@ -6,7 +6,7 @@ PWD=`pwd`
 test:messagestest encryptiontest messagetest
 	@echo
 
-messagestest: array.ssuccess array-one.ssuccess array-empty.ssuccess #array-nothing.ssuccess
+messagestest: array.ssuccess array-one.ssuccess array-empty.ssuccess one.ssuccess #array-nothing.ssuccess
 
 encryptiontest: e.esuccess e-nodata.efail e-nobase64.efail
 

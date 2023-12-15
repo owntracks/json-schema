@@ -3,6 +3,6 @@
 		"_type": "location", "lat": 8, "lon": 9, "tst": 1000
 	},
 	{
-		"_type": "location", "lat": 8, "lon": 9, "tst": 1000
+		"_type": "lwt", "tst": 1000
 	}
 ]
