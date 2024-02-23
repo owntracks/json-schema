@@ -1,0 +1,14 @@
+{
+  "_type": "waypoints",
+  "waypoints": [
+    {
+      "_type": "waypoint",
+      "desc": "+follow",
+      "lat": 37.332331,
+      "lon": -122.031219,
+      "rad": 50,
+      "rid": "QUICKSETUP-BA2BFB63-7C60",
+      "tst": 1610104383
+    }
+  ]
+}

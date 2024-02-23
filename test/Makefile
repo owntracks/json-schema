@@ -10,18 +10,26 @@ messagestest: array.ssuccess array-one.ssuccess array-empty.ssuccess one.ssucces
 
 encryptiontest: e.esuccess e-nodata.efail e-nobase64.efail
 
-messagetest: card-without-face.mfail \
+messagetest: \
+	object-empty.mfail \
+	card-without-face.mfail \
 	cmd-illegal-action.mfail \
 	cmd-without-action.mfail \
 	cmd-action-wo-content.mfail \
 	cmd-status.msuccess \
+	cmd-waypoints.msuccess \
+	cmd-clearWaypoints.msuccess \
+	cmd-reportLocation.msuccess \
+	cmd-reportSteps.msuccess \
+	cmd-setWaypoints.msuccess \
 	untour-illegal.mfail \
 	steps-kaputt.mfail \
 	location-lat-missing.mfail \
 	tour-invalid-request.mfail \
 	transition-illegal-lat.mfail \
-	card.msuccess \
-	cmd3.msuccess \
+	card-vw.msuccess \
+	card-volvo.msuccess \
+	cmd-dump.msuccess \
 	cmd5.msuccess \
 	l.msuccess \
 	l2.msuccess \
@@ -41,6 +49,7 @@ messagetest: card-without-face.mfail \
 	transition.msuccess \
 	w.msuccess \
 	waypoint-circular.msuccess \
+	waypoints-follow-only.msuccess \
 	lwt.msuccess \
 	lwt-notst.mfail \
 	lwt-extra.msuccess
