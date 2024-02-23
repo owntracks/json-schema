@@ -1,0 +1,18 @@
+{
+  "_type": "status",
+  "iOS": {
+    "altimeterAuthorizationStatus": "CMAuthorizationStatusNotDetermined",
+    "altimeterIsAbsoluteAltitudeAvailable": false,
+    "altimeterIsRelativeAltitudeAvailable": false,
+    "backgroundRefreshStatus": "UIBackgroundRefreshStatusAvailable",
+    "deviceIdentifierForVendor": "27A2DC28-0371-4077-B607-85FE50BDCB74",
+    "deviceModel": "iPad",
+    "deviceSystemName": "iPadOS",
+    "deviceSystemVersion": "17.2",
+    "deviceUserInterfaceIdiom": "UIUserInterfaceIdiomPad",
+    "locale": "de_DE",
+    "localeUsesMetricSystem": true,
+    "locationManagerAuthorizationStatus": "kCLAuthorizationStatusAuthorizedAlways",
+    "version": "17.2.3"
+  }
+}

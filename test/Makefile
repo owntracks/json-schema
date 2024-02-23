@@ -14,6 +14,7 @@ messagetest: card-without-face.mfail \
 	cmd-illegal-action.mfail \
 	cmd-without-action.mfail \
 	cmd-action-wo-content.mfail \
+	cmd-status.msuccess \
 	untour-illegal.mfail \
 	steps-kaputt.mfail \
 	location-lat-missing.mfail \
@@ -32,6 +33,7 @@ messagetest: card-without-face.mfail \
 	tours-response-0.msuccess \
 	tours-response-2.msuccess \
 	untour.msuccess \
+	status.msuccess \
 	steps.msuccess \
 	steps-long.msuccess \
 	steps-long-invalid.mfail \

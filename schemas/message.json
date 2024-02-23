@@ -164,6 +164,7 @@
                 "location",
                 "lwt",
                 "request",
+                "status",
                 "steps",
                 "transition",
                 "waypoint",
@@ -182,6 +183,7 @@
                 "response",
                 "setConfiguration",
                 "setWaypoints",
+                "status",
                 "waypoints"
             ]
         },
