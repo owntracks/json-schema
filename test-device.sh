@@ -18,28 +18,57 @@ echo $CMD
 echo "Running OwnTracks cmd tests against an OwnTracks device"
 echo "You may want to follow the results by mosquitto_sub -t '#' | jq"
 
+echo
+echo "Testing some corrupt or illegal messages..."
 $CMD -f test/array-empty.json
 $CMD -f test/object-empty.json
 $CMD -f test/cmd-illegal-action.json
 $CMD -f test/cmd-without-action.json
 
+echo "Testing status..."
 $CMD -f test/cmd-status.json
+echo "Testing dump..."
 $CMD -f test/cmd-dump.json
+echo "Testing reportLocation..."
 $CMD -f test/cmd-reportLocation.json
 
-# you may not get an immediate response because the device prompts the user for access to fitness data
+echo "Testing reportSteps... you may not get an immediate response because the device prompts the user for access to fitness data"
 $CMD -f test/cmd-reportSteps.json
 
+echo "Testing waypoints..."
 $CMD -f test/cmd-waypoints.json
+echo "Testing clearWaypoints..."
 $CMD -f test/cmd-clearWaypoints.json
 $CMD -f test/cmd-waypoints.json
+echo "Testing setWaypoints...(insert)"
 $CMD -f test/cmd-setWaypoints.json
 $CMD -f test/cmd-waypoints.json
+echo "Testing setWaypoints...(update)"
+$CMD -f test/cmd-setWaypoints-update.json
+$CMD -f test/cmd-waypoints.json
+echo "Testing setWaypoints...(delete)"
+$CMD -f test/cmd-setWaypoints-delete.json
+$CMD -f test/cmd-waypoints.json
 
+echo "Testing some bad setConfiguration commands..."
+$CMD -f test/cmd-setConfiguration-noconfiguration.json
+$CMD -f test/cmd-setConfiguration-config-wrongtype.json
+$CMD -f test/cmd-setConfiguration-badconfiguration.json
+$CMD -f test/cmd-setConfiguration-config-notype.json
+
+echo "Testing setConfiguration lock..."
+$CMD -f test/cmd-setConfiguration-lock.json
+echo "Testing setConfiguration unlock..."
+$CMD -f test/cmd-setConfiguration-unlock.json
+
+echo "Testing cards for me..."
 $PUBINFO -f test/card-without-face.json
 $PUBINFO -f test/card-vw.json
 
+echo "Testing cards for my friend..."
 $FRIINFO -f test/card-volvo.json
+
+echo "Testing location message..."
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=-1 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=1 tid=S1 m=1 cog=56`

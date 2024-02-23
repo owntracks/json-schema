@@ -1,0 +1,18 @@
+{
+	"_type": "cmd",
+	"action": "setWaypoints",
+	"waypoints": {
+		"_type": "waypoints",
+		"waypoints": [
+                        {
+                                "_type": "waypoint",
+                                "desc": "work-delete",
+                                "lat": 100.0,
+                                "lon": 500.0,
+                                "rad": 0,
+                                "rid": "TESTING-ID-2",
+                                "tst": 1710104384
+                        }
+		]
+	}
+}

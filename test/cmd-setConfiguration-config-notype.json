@@ -1,0 +1,7 @@
+{
+	"_type" : "cmd",
+	"action":"setConfiguration",
+	"configuration": {
+		"locked": true
+	}
+}

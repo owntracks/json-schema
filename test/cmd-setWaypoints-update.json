@@ -1,0 +1,18 @@
+{
+	"_type": "cmd",
+	"action": "setWaypoints",
+	"waypoints": {
+		"_type": "waypoints",
+		"waypoints": [
+                        {
+                                "_type": "waypoint",
+                                "desc": "home-updated",
+                                "lat": 37.2,
+                                "lon": -122.2,
+                                "rad": 52,
+                                "rid": "TESTING-ID-1",
+                                "tst": 1710104383
+                        }
+		]
+	}
+}

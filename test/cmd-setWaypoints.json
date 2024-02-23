@@ -12,6 +12,24 @@
 				"rad": 50,
 				"rid": "QUICKSETUP-BA2BFB63-7C60",
 				"tst": 1610104383
+			},
+			{
+				"_type": "waypoint",
+				"desc": "home",
+				"lat": 37.1,
+				"lon": -122.1,
+				"rad": 50,
+				"rid": "TESTING-ID-1",
+				"tst": 1710104383
+			},
+			{
+				"_type": "waypoint",
+				"desc": "work",
+				"lat": 37.3,
+				"lon": -122.3,
+				"rad": 100,
+				"rid": "TESTING-ID-2",
+				"tst": 1710104384
 			}
 		]
 	}

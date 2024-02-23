@@ -22,6 +22,14 @@ messagetest: \
 	cmd-reportLocation.msuccess \
 	cmd-reportSteps.msuccess \
 	cmd-setWaypoints.msuccess \
+	cmd-setWaypoints-update.msuccess \
+	cmd-setWaypoints-delete.msuccess \
+	cmd-setConfiguration-badconfiguration.msuccess \
+	cmd-setConfiguration-config-wrongtype.msuccess \
+	cmd-setConfiguration-noconfiguration.msuccess \
+	cmd-setConfiguration-config-notype.msuccess \
+	cmd-setConfiguration-lock.msuccess \
+	cmd-setConfiguration-unlock.msuccess \
 	untour-illegal.mfail \
 	steps-kaputt.mfail \
 	location-lat-missing.mfail \
