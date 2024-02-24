@@ -82,8 +82,7 @@
                 "properties": {
                     "face": { "$ref": "#/$defs/face" },
                     "name": { "$ref": "#/$defs/name" }
-                },
-                "required": [ "face", "name" ]
+                }
             }
         },
         {

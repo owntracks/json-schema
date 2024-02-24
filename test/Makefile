@@ -12,7 +12,9 @@ encryptiontest: e.esuccess e-nodata.efail e-nobase64.efail
 
 messagetest: \
 	object-empty.mfail \
-	card-without-face.mfail \
+	card-without-face.msuccess \
+	card-without-name.msuccess \
+	card-without-all.msuccess \
 	cmd-illegal-action.mfail \
 	cmd-without-action.mfail \
 	cmd-action-wo-content.mfail \
@@ -24,6 +26,7 @@ messagetest: \
 	cmd-setWaypoints.msuccess \
 	cmd-setWaypoints-update.msuccess \
 	cmd-setWaypoints-delete.msuccess \
+	cmd-setWaypoints-illegal.mfail \
 	cmd-setConfiguration-badconfiguration.msuccess \
 	cmd-setConfiguration-config-wrongtype.msuccess \
 	cmd-setConfiguration-noconfiguration.msuccess \

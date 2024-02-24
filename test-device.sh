@@ -9,6 +9,7 @@
 CMD="mosquitto_pub -u $MQTT_USER -P $MQTT_PASS -h $MQTT_HOST -p $MQTT_PORT -t $MQTT_BASE/cmd -q 1"
 PUB="mosquitto_pub -u $MQTT_USER -P $MQTT_PASS -h $MQTT_HOST -p $MQTT_PORT -t $MQTT_BASE -r -q 1"
 PUBINFO="mosquitto_pub -u $MQTT_USER -P $MQTT_PASS -h $MQTT_HOST -p $MQTT_PORT -t $MQTT_BASE/info -r -q 1"
+
 FRIPUB="mosquitto_pub -u $MQTT_USER -P $MQTT_PASS -h $MQTT_HOST -p $MQTT_PORT -t $MQTT_FRIEND -r -q 1"
 FRIEVENT="mosquitto_pub -u $MQTT_USER -P $MQTT_PASS -h $MQTT_HOST -p $MQTT_PORT -t $MQTT_FRIEND/event -q 1"
 FRIINFO="mosquitto_pub -u $MQTT_USER -P $MQTT_PASS -h $MQTT_HOST -p $MQTT_PORT -t $MQTT_FRIEND/info -r -q 1"
@@ -49,6 +50,8 @@ $CMD -f test/cmd-waypoints.json
 echo "Testing setWaypoints...(delete)"
 $CMD -f test/cmd-setWaypoints-delete.json
 $CMD -f test/cmd-waypoints.json
+echo "Testing setWaypoints illegal timestamp..."
+$CMD -f test/cmd-setWaypoints-illegal.json
 
 echo "Testing some bad setConfiguration commands..."
 $CMD -f test/cmd-setConfiguration-noconfiguration.json
@@ -69,11 +72,26 @@ echo "Testing cards for my friend..."
 $FRIINFO -f test/card-volvo.json
 
 echo "Testing location message..."
+#{"_type":"location","acc":5,"alt":0,"cog":342,"conn":"w","inregions":["HIGHSPEED|2|1"],"inrids":["49b4ab"],"lat":37.476248,"lon":-122.298791,"m":2,"t":"t","tid":"S3","tst":1708789342,"vel":121}
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=-1 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=1 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 tid=S1 m=1 cog=56`
 
+echo "Testing bad event messages..."
+$FRIPUB -m '[]'
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 wtst=1708705570 rid=49b4ab t=c tid=S1 acc=5 desc=HIGHSPEED event=enter`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=1 tid=S1 acc=5 desc=HIGHSPEED event=enter`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=c tid=null acc=5 desc=HIGHSPEED event=enter`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=c tid=S1 acc=5 desc=HIGHSPEED`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=c tid=S1 acc=5 desc=HIGHSPEED event=1`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=c tid=S1 acc=5 desc=null event=enter`
+echo "Testing event messages..."
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=c tid=S1 acc=5 desc=HIGHSPEED event=enter`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=c tid=S1 acc=5 event=enter`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab tid=S1 acc=5 desc=HIGHSPEED event=enter`
+$FRIPUB -m `jo _type=transition lat=37.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=b tid=S1 acc=5 desc=HIGHSPEED event=enter`
+$FRIPUB -m `jo _type=transition lat=38.442964 lon=-122.252948 tst=\`date +%s\` wtst=1708705570 rid=49b4ab t=c tid=S1 acc=5 desc=HIGHSPEED event=exit`
 exit
 
