@@ -15,6 +15,9 @@ messagetest: \
 	card-without-face.msuccess \
 	card-without-name.msuccess \
 	card-without-all.msuccess \
+	card-invalid-b64.mfail \
+	card-vw.msuccess \
+	card-volvo.msuccess \
 	cmd-illegal-action.mfail \
 	cmd-without-action.mfail \
 	cmd-action-wo-content.mfail \
@@ -38,8 +41,6 @@ messagetest: \
 	location-lat-missing.mfail \
 	tour-invalid-request.mfail \
 	transition-illegal-lat.mfail \
-	card-vw.msuccess \
-	card-volvo.msuccess \
 	cmd-dump.msuccess \
 	cmd5.msuccess \
 	l.msuccess \

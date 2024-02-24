@@ -66,6 +66,9 @@ $CMD -f test/cmd-setConfiguration-unlock.json
 
 echo "Testing cards for me..."
 $PUBINFO -f test/card-without-face.json
+$PUBINFO -f test/card-without-name.json
+$PUBINFO -f test/card-without-all.json
+$PUBINFO -f test/card-invalid-b64.json
 $PUBINFO -f test/card-vw.json
 
 echo "Testing cards for my friend..."
