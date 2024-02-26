@@ -87,12 +87,97 @@ $FRIINFO -f test/card-volvo.json
 fi
 
 if [ -z $1 ] || [ "$1" = "location" ] ; then
+echo "Testing bad location message..."
+#bad _type
+$FRIPUB -m `jo _type=7.7 lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=null lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad tst
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=abc batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=null batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad lat
+$FRIPUB -m `jo _type=location lat=xyz lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=null lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location  lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad lon
+$FRIPUB -m `jo _type=location lat=44.221389 lon=def tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=null tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad lat/lon
+$FRIPUB -m `jo _type=location lat=0.0 lon=0.0 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=100.0 lon=0.0 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=100.0 lon=500.0 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad acc
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=abc vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=null vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 vac=0 tid=S1 m=1 cog=56`
+
+#bad vel
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=abc alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=null alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=-1 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=-883 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad batt
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=abc vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=null vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad alt
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=abc acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=null acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad vac
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=abc tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=null tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 tid=S1 m=1 cog=56`
+
+#bad cog
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=abc`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=null`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1`
+
+#bad created_at
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` created_at=abc batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` created_at=null batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad tid
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=null m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 m=1 cog=56`
+
+#bad t
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` t=1 batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` t=null batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\`  batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad poi
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56 poi=1`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56 poi=null`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
+#bad tag
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56 tag=7.7`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56 tag=null`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
+
 echo "Testing location message..."
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=0 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=-1 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 vac=1 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 acc=52 tid=S1 m=1 cog=56`
 $FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 tid=S1 m=1 cog=56`
+$FRIPUB -m `jo _type=location lat=44.221389 lon=6.64635 tst=\`date +%s\` batt=55 vel=54 alt=53 tid=S1 m=1 cog=56 poi=interesting tag=ontheroad created_at=\`date +%s\``
+
 $FRIPUBNORETAIN -m `jo _type=lwt tst=1708703389` # ios style lwt
 $FRIPUBNORETAIN -m `jo _type=lwt` # Android style lwt
 fi
