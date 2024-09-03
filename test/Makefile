@@ -20,7 +20,6 @@ messagetest: \
 	card-volvo.msuccess \
 	cmd-illegal-action.mfail \
 	cmd-without-action.mfail \
-	cmd-action-wo-content.mfail \
 	cmd-status.msuccess \
 	cmd-waypoints.msuccess \
 	cmd-clearWaypoints.msuccess \
@@ -42,7 +41,6 @@ messagetest: \
 	tour-invalid-request.mfail \
 	transition-illegal-lat.mfail \
 	cmd-dump.msuccess \
-	cmd5.msuccess \
 	l.msuccess \
 	l2.msuccess \
 	location-5s.msuccess \

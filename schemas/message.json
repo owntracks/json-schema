@@ -9,16 +9,13 @@
     "properties": {
         "_type": { "$ref": "#/$defs/_type" },
         "action": { "$ref": "#/$defs/action" },
-        "content": { "$ref": "#/$defs/content" },
         "lat": { "$ref": "#/$defs/lat" },
         "lon": { "$ref": "#/$defs/lon" },
         "tst": { "$ref": "#/$defs/tst" },
-        "notification": { "$ref": "#/$defs/notification" },
         "ntours": { "$ref": "#/$defs/ntours" },
         "request": { "$ref": "#/$defs/request" },
         "tours": { "$ref": "#/$defs/tours" },
-        "uuid": { "$ref": "#/$defs/uuid" },
-        "url": { "$ref": "#/$defs/url" }
+        "uuid": { "$ref": "#/$defs/uuid" }
     },
     "required": [ "_type" ],
     "allOf": [
@@ -103,26 +100,6 @@
                 "required": [ "response" ]
             }, "then": {
                 "required": [ "request" ]
-            }
-        },
-        {
-            "if": {
-                "properties": {
-                    "action": { "const": "action" }
-                },
-                "required": [ "action" ]
-            }, "then": {
-                "oneOf": [
-                    {
-                        "required": [ "content" ]
-                    },
-                    {
-                        "required": [ "url" ]
-                    },
-                    {
-                        "required": [ "notification" ]
-                    }
-                ]
             }
         },
         {
@@ -327,13 +304,6 @@
                 "leave"
             ]
         },
-        "content": {
-            "type": "string",
-            "contentMediaType": "text/html"
-        },
-        "url": {
-            "type": "string"
-        },
         "poi": {
             "description": "Point of interest name",
             "type": "string"
@@ -379,9 +349,6 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 1
-        },
-        "notification": {
-            "type": "string"
         },
         "dist": {
             "description": "Distance travelled since the last location report",
